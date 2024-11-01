@@ -44,16 +44,15 @@ public class BazookaShooting : MonoBehaviour
             StartCoroutine(FireCooldown());
         }
     }
-
     void FireRocket()
     {
-        // Créer la rocket au point de départ du bazooka
         GameObject rocket = Instantiate(rocketPrefab, barrelEnd.position, barrelEnd.rotation);
+        rocket.tag = "Rocket";  // Assigne le tag "Rocket" à la rocket
         Rigidbody rb = rocket.GetComponent<Rigidbody>();
-
-        // Appliquer une force pour propulser la rocket en avant
         rb.AddForce(barrelEnd.forward * fireForce);
+        Destroy(rocket, 10f); // Détruit la rocket après 5 secondes pour économiser les ressources
     }
+
 
     private System.Collections.IEnumerator FireCooldown()
     {
