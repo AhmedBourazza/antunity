@@ -20,7 +20,6 @@ public class NewBehaviourScript : MonoBehaviour
         Vector3 forward = cameraTransform.forward; // Direction avant de la caméra
         Vector3 right = cameraTransform.right;     // Direction droite de la caméra
 
-        // Assurer que l'axe Y soit toujours 0 (pour éviter de déplacer en hauteur)
         forward.y = 0f;
         right.y = 0f;
 
