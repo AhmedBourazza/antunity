@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Amange
   - Rocket
+  - Enemy
+  - SpecificObject
   layers:
   - Default
   - TransparentFX

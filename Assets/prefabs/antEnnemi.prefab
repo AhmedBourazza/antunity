@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: antEnnemi
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ed40ff5b5918c94dab0bd1a5c1dca1a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7807634055741096743, guid: 6ed40ff5b5918c94dab0bd1a5c1dca1a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -111,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   target: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
 --- !u!54 &7772381033141335005
 Rigidbody:
   m_ObjectHideFlags: 0
