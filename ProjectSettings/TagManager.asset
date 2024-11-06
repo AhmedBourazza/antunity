@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Amange
+  - Rocket
+  - Enemy
+  - SpecificObject
   layers:
   - Default
   - TransparentFX

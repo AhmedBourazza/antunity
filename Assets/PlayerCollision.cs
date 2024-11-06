@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
-    // Compteur qui sera décrémenté
+    // Compteur qui sera dÃ©crÃ©mentÃ©
     public int counter = 10;
 
     // Tag de l'objet avec lequel le joueur doit entrer en collision
@@ -14,53 +14,53 @@ public class PlayerCollision : MonoBehaviour
     // Tag pour les ennemis
     public string enemyTag = "Enemy"; // Assurez-vous que vos ennemis ont ce tag
 
-    // Référence au texte UI (Text ou TextMeshPro)
+    // RÃ©fÃ©rence au texte UI (Text ou TextMeshPro)
     public TextMeshProUGUI counterText;  // Utiliser TextMeshPro (sinon remplacer par 'Text' si tu utilises l'UI de base)
 
     // Compteur pour les roquettes restantes
     public int rocketCount = 10; // Nombre initial de roquettes
 
-    // Référence au texte UI pour afficher le nombre de roquettes
+    // RÃ©fÃ©rence au texte UI pour afficher le nombre de roquettes
     public TextMeshProUGUI rocketCounterText;
 
 
-    // Score du joueur (basé sur le compteur restant)
+    // Score du joueur (basÃ© sur le compteur restant)
     public int score;
 
     void Start()
     {
         // Initialise le texte avec la valeur actuelle du compteur
         UpdateCounterText();
-        UpdateRocketCounterText(); // Met à jour le texte des roquettes
+        UpdateRocketCounterText(); // Met Ã  jour le texte des roquettes
     }
 
     void Update()
     {
-        // Exécuter le tir en appuyant sur une touche (ex. : espace pour tirer)
+        // ExÃ©cuter le tir en appuyant sur une touche (ex. : espace pour tirer)
         if (Input.GetKeyDown(KeyCode.Space) && rocketCount > 0)
         {
             FireRocket();
         }
     }
 
-    // Méthode pour tirer une roquette
+    // MÃ©thode pour tirer une roquette
     void FireRocket()
     {
-        rocketCount--; // Décrémente le nombre de roquettes
-        UpdateRocketCounterText(); // Met à jour le texte UI
-        Debug.Log("Roquette tirée ! Roquettes restantes : " + rocketCount);
+        rocketCount--; // DÃ©crÃ©mente le nombre de roquettes
+        UpdateRocketCounterText(); // Met Ã  jour le texte UI
+        Debug.Log("Roquette tirÃ©e ! Roquettes restantes : " + rocketCount);
 
         // Code pour tirer la roquette ici (exemple de log pour l'instant)
         // Exemple : Instantiate(rocketPrefab, transform.position, transform.rotation);
     }
 
-    // Méthode pour mettre à jour le texte UI avec la valeur actuelle du compteur
+    // MÃ©thode pour mettre Ã  jour le texte UI avec la valeur actuelle du compteur
     public void UpdateCounterText()
     {
         counterText.text = "Counter: " + counter;
     }
 
-    // Met à jour le texte du compteur de roquettes
+    // Met Ã  jour le texte du compteur de roquettes
     public void UpdateRocketCounterText()
     {
         if (rocketCounterText != null)
@@ -69,39 +69,39 @@ public class PlayerCollision : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("rocketCounterText n'est pas assigné dans l'Inspector !");
+            Debug.LogWarning("rocketCounterText n'est pas assignÃ© dans l'Inspector !");
         }
     }
 
-    // Méthode appelée lorsque le joueur entre en collision avec un autre objet
+    // MÃ©thode appelÃ©e lorsque le joueur entre en collision avec un autre objet
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision détectée avec: " + collision.gameObject.name);
+        Debug.Log("Collision dÃ©tectÃ©e avec: " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag(enemyTag))
         {
-            Debug.Log("Joueur a touché un ennemi !");
+            Debug.Log("Joueur a touchÃ© un ennemi !");
             EndGame();
         }
 
         if (collision.gameObject.CompareTag(targetTag))
         {
-            // Décrémente le compteur
+            // DÃ©crÃ©mente le compteur
             counter--;
 
             Debug.Log("Collision avec " + collision.gameObject.name + ". Compteur: " + counter);
 
             // Ajoute 6 au compteur de roquettes
             rocketCount += 6;
-            UpdateRocketCounterText(); // Met à jour l'affichage des roquettes
+            UpdateRocketCounterText(); // Met Ã  jour l'affichage des roquettes
 
-            // Détruit l'objet après la collision
+            // DÃ©truit l'objet aprÃ¨s la collision
             Destroy(collision.gameObject);
 
-            // Met à jour l'affichage du compteur
+            // Met Ã  jour l'affichage du compteur
             UpdateCounterText();
 
-            // Vérifie si le compteur est à zéro pour terminer le jeu
+            // VÃ©rifie si le compteur est Ã  zÃ©ro pour terminer le jeu
             if (counter <= 0)
             {
                 EndGame();
@@ -109,12 +109,12 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    // Méthode alternative si tu utilises un trigger collider
+    // MÃ©thode alternative si tu utilises un trigger collider
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(enemyTag))
         {
-            Debug.Log("Joueur a touché un ennemi !");
+            Debug.Log("Joueur a touchÃ© un ennemi !");
             EndGame();
         }
 
@@ -128,23 +128,26 @@ public class PlayerCollision : MonoBehaviour
 
             if (counter <= 0)
             {
-                Debug.Log("Compteur atteint zéro, appel de EndGame");
+                Debug.Log("Compteur atteint zÃ©ro, appel de EndGame");
                 EndGame();
             }
         }
     }
 
-    // Méthode appelée lorsque le jeu doit se terminer
+    // MÃ©thode appelÃ©e lorsque le jeu doit se terminer
     public void EndGame()
     {
-        Debug.Log("EndGame() appelé. Score avant enregistrement: " + counter);
+        Debug.Log("EndGame() appelÃ©. Score avant enregistrement: " + counter);
 
         score = 10 - counter;
         PlayerPrefs.SetInt("FinalScore", score);
         PlayerPrefs.Save();
 
-        Debug.Log("Score enregistré: " + score);
+        Debug.Log("Score enregistrÃ©: " + score);
 
         SceneManager.LoadScene("ResultScene");
     }
+
+}
+
 }
