@@ -18,5 +18,11 @@ EditorBuildSettings:
     path: Assets/Sun_Temple/Scenes/ResultScene.unity
     guid: 75ede7f648f6af94797a6e1fbf4022ce
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a68ffe886c1e6954f8c41c7c4f193f9a,
+      type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: a7f6573814bd98446abd0ce3ef689988,
+      type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 18275561af892be47b8776250f9f1638,
+      type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4accfd0aa63ac7943a2edf6cbe97e5c2,
       type: 2}
